@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f8f3ee" />
+  <meta name="description" content="A little California invitation, made just for Namratha." />
+  <title>A Little California Plan — For Namratha</title>
+  <style>
+    :root {
+      --ink: #352c2b;
+      --muted: #827671;
+      --rose: #b87573;
+      --rose-deep: #925553;
+      --rose-pale: #f5e5e2;
+      --paper: #fffaf5;
+      --cream: #f8f3ee;
+      --stroke: #e8d9d1;
+      --shadow: 0 30px 90px rgba(107,72,65,.11);
+      font-synthesis: none;
+      color-scheme: light;
+    }
+    *,*::before,*::after { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif; color:var(--ink); background:var(--cream); }
+    button,textarea { font:inherit; }
+    button { cursor:pointer; }
+    button:focus-visible,textarea:focus-visible { outline:3px solid #a66966; outline-offset:4px; }
+    ::selection { color:var(--ink); background:#f4d8d1; }
+    .page { min-height:100vh; position:relative; overflow:hidden; background: radial-gradient(ellipse 65% 35% at 99% 0%, #f4dbd3 0%, transparent 88%), radial-gradient(ellipse 35% 28% at 0% 90%, #f3e5d2 0%, transparent 90%), var(--cream); }
+    .page::before { content:""; pointer-events:none; opacity:.15; position:absolute; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.11'/%3E%3C/svg%3E"); }
+    .shell { position:relative; z-index:1; max-width:1160px; margin:auto; padding:28px 48px 50px; }
+    .top { display:flex; align-items:center; justify-content:space-between; gap:14px; }
+    .brand { display:flex; align-items:center; gap:12px; font-size:11px; letter-spacing:.24em; font-weight:750; text-transform:uppercase; }
+    .brand-mark { width:34px;height:34px; display:grid;place-items:center; border:1px solid #d1b6a9;border-radius:50%;color:var(--rose-deep);font-size:21px;font-family:Georgia,serif; }
+    .top-note { color:var(--muted);font-size:11px;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap; }
+    .hero { display:grid;grid-template-columns:minmax(0,1.03fr) minmax(0,.97fr); min-height:680px; align-items:center;gap:30px; padding:42px 0 52px; }
+    .eyebrow { display:flex;align-items:center;gap:12px;font-size:11px;letter-spacing:.25em;text-transform:uppercase;font-weight:750;color:var(--rose-deep); }
+    .eyebrow::before { content:"";width:36px;height:1px;background:var(--rose); }
+    h1,h2,h3,p { margin-top:0; }
+    .hero h1 { margin:24px 0 16px; font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:clamp(66px,7.6vw,112px);line-height:.99;letter-spacing:-.065em; }
+    .hero h1 em { font-weight:400;color:var(--rose-deep); }
+    .hero-desc { max-width:410px;font-size:17px;color:#736660;line-height:1.85;margin:22px 0 28px; }
+    .primary { display:inline-flex;justify-content:center;align-items:center;gap:15px;border:none;border-radius:100px;padding:17px 27px;background:var(--ink);color:white;font-weight:650;font-size:14px;letter-spacing:.01em;box-shadow:0 12px 30px rgba(53,44,43,.12);transition:transform .2s ease,box-shadow .2s ease,background .2s ease; }
+    .primary:hover { transform:translateY(-2px);box-shadow:0 17px 35px rgba(53,44,43,.2);background:#55413e; }
+    .primary svg {width:18px;height:18px;}
+    .scroll-note { margin-top:25px;font-size:11px;letter-spacing:.08em;color:#9f8f87; }
+    .art-area { position:relative;display:flex;align-items:center;justify-content:center;min-height:500px; }
+    .art-area::before { content:"";position:absolute;width:min(470px,92%);aspect-ratio:1;border-radius:50%;background:#efdbd3;opacity:.65; }
+    .orbit { width:410px;height:410px;border:1px solid #e2c9bd;border-radius:50%;position:absolute;transform:rotate(-26deg);opacity:.55; }
+    .orbit::before,.orbit::after {content:"✦";position:absolute;color:#c18b7c;font-size:22px; }
+    .orbit::before {right:45px;top:20px;}.orbit::after {left:10px;bottom:68px;font-size:14px;}
+    .envelope-button { position:relative; width:min(400px,90%); aspect-ratio:1.16; background:transparent;border:0;filter:drop-shadow(0 26px 24px rgba(118,72,69,.17)); transform:rotate(-7deg);transition:transform .45s cubic-bezier(.23,.9,.35,1.25); }
+    .envelope-button:hover {transform:rotate(-3deg) translateY(-8px);}
+    .envelope {position:absolute;left:0;right:0;bottom:4px;height:245px;z-index:2;}
+    .envelope-back {position:absolute;inset:0;background:#cf9287;clip-path:polygon(0 0,100% 0,100% 100%,0 100%);border-radius:9px;}
+    .letter {position:absolute;left:11%;top:-38px;width:78%;height:236px;background:#fffaf5;border-radius:7px;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:15px;box-shadow:0 -5px 18px rgba(89,65,61,.06);transition:transform .8s cubic-bezier(.2,.75,.22,1);}
+    .letter::before { content:"";position:absolute;inset:8px;border:1px solid #eadbd1;border-radius:4px; }
+    .letter .tiny {font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:#ad796c;z-index:1;margin-bottom:17px;}
+    .letter .name {font:italic 38px Georgia,serif;color:#744942;z-index:1;}
+    .letter .from {font-size:12px;color:#ad9086;margin-top:12px;z-index:1;}
+    .envelope-front {position:absolute;inset:0;z-index:3;border-radius:8px;background:#deb0a3;clip-path:polygon(0 0,50% 54%,100% 0,100% 100%,0 100%);}
+    .envelope-left {position:absolute;inset:0;z-index:4;background:#e8bdb0;clip-path:polygon(0 0,53% 54%,0 100%);border-radius:8px;}
+    .envelope-right {position:absolute;inset:0;z-index:4;background:#e0ac9e;clip-path:polygon(100% 0,47% 54%,100% 100%);border-radius:8px;}
+    .envelope-bottom {position:absolute;inset:0;z-index:5;background:#eac4b7;clip-path:polygon(0 100%,50% 43%,100% 100%);border-radius:8px;}
+    .seal {position:absolute;z-index:6;left:50%;top:48%;transform:translate(-50%,-50%);width:55px;height:55px;background:#ad6965;color:#fffaf5;border:3px solid #b77974;border-radius:50%;display:grid;place-items:center;box-shadow:0 5px 12px rgba(85,46,43,.17);transition:transform .35s;}
+    .seal svg{height:23px;width:23px;}
+    .envelope-button:hover .seal{transform:translate(-50%,-50%) scale(1.12);}
+    .envelope-button.opened .letter {transform:translateY(-68px);}
+    .caption-curve {position:absolute;bottom:13px;right:26px;color:#a87e70;font:italic 22px Georgia,serif;transform:rotate(-7deg);}
+    .doodle-star {position:absolute;right:12%;top:7%;font-size:27px;color:#d4a58f; }
+    .doodle-heart {position:absolute;left:8%;bottom:19%;font-size:24px;color:#c28b83;transform:rotate(18deg); }
+    .reveal {max-width:900px;margin:15px auto 0;opacity:0;transform:translateY(35px);transition:opacity .75s,transform .75s;}
+    .reveal[hidden] {display:none;}
+    .reveal.visible {opacity:1;transform:translateY(0);}
+    .invite-card {position:relative;background:var(--paper);border:1px solid #e9dcd1;border-radius:28px;padding:60px 70px 38px;box-shadow:var(--shadow);overflow:hidden;}
+    .invite-card::before,.invite-card::after {content:"✳";position:absolute;font-size:90px;color:#f0dfd4;pointer-events:none;}
+    .invite-card::before {top:20px;right:26px;}.invite-card::after {bottom:3px;left:14px;font-size:47px;}
+    .letter-top {text-align:center;position:relative;z-index:1;}
+    .tiny-upper {font-size:11px;text-transform:uppercase;letter-spacing:.27em;font-weight:700;color:#ab7972;}
+    .heart-divider {display:flex;justify-content:center;align-items:center;gap:14px;color:#b97973;margin:13px auto 24px;}
+    .heart-divider::before,.heart-divider::after {content:"";width:50px;height:1px;background:#e8c9bd;}
+    .letter-top h2 {font:normal clamp(40px,5vw,62px)/1.13 Georgia,"Times New Roman",serif;letter-spacing:-.05em;margin:0 0 22px;}
+    .letter-top h2 em {color:var(--rose-deep);}
+    .intro {font-size:17px;line-height:1.88;color:#766761;max-width:625px;margin:0 auto 34px;}
+    .visual {height:190px;margin:0 0 39px;border-radius:17px;overflow:hidden;border:1px solid #ecd7ca;background:#f4d7c2;}
+    .visual svg {display:block;width:100%;height:100%;}
+    .section-heading {font-size:10px;text-transform:uppercase;letter-spacing:.22em;color:#af7d74;font-weight:760;margin:0 0 17px;}
+    .plan-row {display:grid;grid-template-columns:110px minmax(0,1fr);gap:32px;padding:32px 0;border-top:1px solid #eaded7;}
+    .date {display:flex;flex-direction:column;align-items:center;justify-content:center;width:106px;height:109px;border-radius:17px;background:#f5e8e2;border:1px solid #e9d5cb;}
+    .date .month {font-size:11px;text-transform:uppercase;letter-spacing:.17em;font-weight:720;color:#936e64;}
+    .date .day {font:normal 46px/.97 Georgia,serif;letter-spacing:-.06em;color:#62433d;margin:7px 0 5px;}
+    .date .weekday {font-size:11px;color:#927972;}
+    .plan-row h3 {font:normal 29px/1.2 Georgia,serif;margin:4px 0 10px;letter-spacing:-.035em;}
+    .plan-row h3 .emoji {font-size:22px;vertical-align:middle;margin-left:6px;}
+    .plan-row p {font-size:15px;line-height:1.8;color:#796b66;margin:0;}
+    .plan-row .small-kicker {font-size:10px;font-weight:730;text-transform:uppercase;letter-spacing:.15em;color:#b17971;margin:0 0 5px;}
+    .choice-block {background:#fbf1eb;border:1px solid #eeddd3;border-radius:18px;padding:25px 27px;margin:14px 0 34px;}
+    .choice-block h3 {font:normal 26px Georgia,serif;letter-spacing:-.03em;margin:0 0 6px;}
+    .choice-block .sub {font-size:13px;color:#8b7771;margin:0 0 22px;line-height:1.6;}
+    .choices {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;}
+    .choice {border:1px solid #e6d3ca;border-radius:13px;background:#fffcf8;color:#694f49;display:flex;justify-content:center;flex-direction:column;gap:11px;align-items:center;min-height:122px;padding:18px 9px;font-size:12px;font-weight:690;transition:transform .2s,border-color .2s,background .2s,box-shadow .2s; }
+    .choice .choice-icon {font-size:28px;line-height:1;}
+    .choice:hover {border-color:#c88f81;transform:translateY(-2px);}
+    .choice[aria-pressed="true"] {border:2px solid #b87573;background:#f8e7e2;box-shadow:0 4px 16px rgba(151,92,81,.1);padding:17px 8px;}
+    .other-idea {margin-top:16px;display:none;}
+    .other-idea.show {display:block;}
+    .other-idea label {display:block;font-size:12px;color:#886f68;margin-bottom:9px;}
+    .other-idea textarea {width:100%;min-height:72px;background:#fffcf9;border:1px solid #e3cfc5;border-radius:11px;padding:13px 14px;resize:vertical;font-size:14px;color:var(--ink);}
+    .closer {text-align:center;padding:15px 0 0;}
+    .closer .line {font:italic 27px/1.4 Georgia,serif;color:#83534d;letter-spacing:-.02em;margin:5px auto 16px;max-width:580px;}
+    .closer .fine {font-size:14px;line-height:1.8;color:#8a7770;max-width:590px;margin:auto auto 27px;}
+    .small-note {font-size:11px;line-height:1.6;color:#a08b84;margin-top:13px;}
+    .bottom {text-align:center;padding:34px 0 0;font:italic 16px Georgia,serif;color:#a28173;}
+    .bottom span {color:#b66e6d;}
+    .dialog-backdrop {position:fixed;z-index:10;inset:0;background:rgba(50,39,36,.48);display:flex;align-items:center;justify-content:center;padding:20px;}
+    .dialog-backdrop[hidden] {display:none;}
+    .dialog {position:relative;width:min(100%,450px);border:1px solid #ebd8cb;border-radius:24px;background:var(--paper);padding:37px;box-shadow:0 20px 90px rgba(44,29,26,.25);}
+    .dialog-close {position:absolute;right:18px;top:16px;background:transparent;border:0;color:#805e54;font-size:28px;line-height:1;padding:5px;}
+    .dialog h3 {font:normal 37px Georgia,serif;margin:14px 0;letter-spacing:-.04em;}
+    .dialog p {color:#87756e;line-height:1.7;font-size:14px;}
+    .reply {white-space:pre-wrap;padding:17px;border:1px solid #ead8d0;border-radius:12px;background:#faf0e9;line-height:1.75;font-size:14px;color:#55413e;margin:18px 0;}
+    .dialog-actions {display:flex;gap:10px;flex-wrap:wrap;}
+    .dialog-actions button {flex:1;min-width:130px;}
+    .outline {display:inline-flex;align-items:center;justify-content:center;background:transparent;border:1px solid #cda9a0;color:#865c54;padding:14px 20px;border-radius:50px;font-size:14px;font-weight:680;}
+    .status {font-size:12px;color:#74655f;margin-top:12px;min-height:16px;}
+    @media (max-width:820px) {
+      .shell {padding:24px 22px 32px;}
+      .hero {grid-template-columns:1fr;gap:5px;min-height:auto;padding:75px 0 35px;text-align:center;}
+      .eyebrow {justify-content:center;}
+      .hero h1 {font-size:clamp(60px,12vw,90px);margin-top:19px;}
+      .hero-desc {margin:20px auto 27px;}
+      .art-area {min-height:430px;order:-1;flex-direction:column;gap:18px;}
+      .envelope-button {width:min(360px,81%);}
+      .orbit {width:340px;height:340px;max-width:91vw;max-height:91vw;}
+      .art-area::before {width:360px;max-width:90vw;}
+      .caption-curve {position:relative;right:auto;bottom:auto;align-self:flex-end;margin-right:13%;transform:rotate(-7deg);}
+      .invite-card {padding:45px 34px 33px;}
+      .visual {height:155px;}
+    }
+    @media (max-width:540px) {
+      .shell {padding:19px 17px 28px;}
+      .brand {font-size:9px;letter-spacing:.16em;gap:7px;}
+      .brand-mark {width:29px;height:29px;font-size:19px;}
+      .top-note {font-size:9px;letter-spacing:.07em;}
+      .hero {padding:37px 0 32px;}
+      .art-area {min-height:365px;gap:12px;}
+      .envelope-button {width:min(315px,83%);}
+      .envelope {height:208px;}
+      .letter {height:207px;top:-28px;}
+      .letter .name {font-size:30px;}
+      .orbit {width:300px;height:300px;}
+      .hero h1 {font-size:clamp(55px,13.5vw,73px);}
+      .hero-desc {font-size:15px;line-height:1.8;}
+      .caption-curve {font-size:18px;margin-right:7%;}
+      .invite-card {border-radius:22px;padding:38px 21px 27px;}
+      .letter-top h2 {font-size:39px;}
+      .intro {font-size:15px;}
+      .visual {height:140px;}
+      .plan-row {grid-template-columns:72px minmax(0,1fr);gap:16px;padding:28px 0;}
+      .date {width:72px;height:83px;border-radius:12px;}
+      .date .day {font-size:37px;margin:4px 0;}
+      .date .month,.date .weekday {font-size:9px;}
+      .plan-row h3 {font-size:25px;}
+      .plan-row h3 .emoji {font-size:18px;}
+      .plan-row p {font-size:14px;}
+      .choice-block {padding:23px 14px;}
+      .choice-block h3 {font-size:25px;}
+      .choices {gap:7px;}
+      .choice {min-height:107px;font-size:10px;padding:10px 5px;gap:9px;}
+      .choice[aria-pressed="true"] {padding:9px 4px;}
+      .choice .choice-icon {font-size:26px;}
+      .closer .line {font-size:24px;}
+      .dialog {padding:29px 22px;}
+    }
+    @media (prefers-reduced-motion:reduce) { html{scroll-behavior:auto;} *,*::before,*::after{animation:none!important;transition:none!important;} }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="shell">
+      <header class="top">
+        <div class="brand"><span class="brand-mark" aria-hidden="true">✳</span> A LITTLE CALIFORNIA PLAN</div>
+        <span class="top-note">NOVEMBER 2026 · JUST FOR YOU</span>
+      </header>
+
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <div class="eyebrow">A little something for Namratha</div>
+          <h1 id="hero-title">California,<br><em>with you.</em></h1>
+          <p class="hero-desc">Not a grand proposal. Just a little invitation for two days I'd really like to spend with you.</p>
+          <button class="primary" id="openBtn" type="button">
+            Open your invitation
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h16m-7-7 7 7-7 7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="scroll-note">P.S. Yes, I made you a little website. ☺</div>
+        </div>
+        <div class="art-area">
+          <div class="orbit" aria-hidden="true"></div>
+          <span class="doodle-star" aria-hidden="true">✧</span><span class="doodle-heart" aria-hidden="true">♡</span>
+          <button class="envelope-button" type="button" id="envelopeBtn" aria-label="Open your invitation for Namratha">
+            <span class="envelope">
+              <span class="envelope-back"></span>
+              <span class="letter"><span class="tiny">A little note for</span><span class="name">Namratha</span><span class="from">with a little California sunshine ♡</span></span>
+              <span class="envelope-front"></span><span class="envelope-left"></span><span class="envelope-right"></span><span class="envelope-bottom"></span>
+              <span class="seal"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.4 3.15 12.9C-1.2 8.66 5.27.7 10.26 5.7L12 7.44l1.74-1.74c5-5 11.46 2.96 7.11 7.2Z"/></svg></span>
+            </span>
+          </button>
+          <span class="caption-curve">go on, open it ↗</span>
+        </div>
+      </section>
+
+      <section class="reveal" id="invitation" aria-label="Your California invitation" hidden>
+        <article class="invite-card">
+          <div class="letter-top">
+            <div class="tiny-upper">A Little California Plan · November 12–15, 2026</div>
+            <div class="heart-divider" aria-hidden="true">♥</div>
+            <h2>A little plan for<br><em>Namratha.</em></h2>
+            <p class="intro">I'm in California from November 12–15, but I already know my favorite part of the trip would be spending some of it with you.</p>
+          </div>
+
+          <div class="visual" role="img" aria-label="Illustrated California sunset with coastal hills and an open road">
+            <svg viewBox="0 0 800 195" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#eec3b2"/><stop offset="1" stop-color="#f9e9d2"/></linearGradient><linearGradient id="road" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#c18472"/><stop offset="1" stop-color="#b36e62"/></linearGradient></defs>
+              <rect width="800" height="195" fill="url(#sky)"/>
+              <circle cx="608" cy="70" r="43" fill="#ffe3ac" opacity=".92"/>
+              <path d="M0 123C119 75 171 85 277 123S489 154 588 116 719 99 800 130V195H0Z" fill="#d7a99a"/>
+              <path d="M0 138C124 124 182 160 286 142s177-22 261 15 183-8 253-1v39H0Z" fill="#b98276"/>
+              <path d="M0 166C91 151 181 166 288 173c130 8 158-36 281-24 86 8 157 24 231 10v36H0Z" fill="#9d796b"/>
+              <path d="M341 195c72-26 134-34 150-50 21-20-15-37-49-42" stroke="url(#road)" stroke-width="19" stroke-linecap="round" fill="none"/>
+              <path d="M341 195c72-26 134-34 150-50 21-20-15-37-49-42" stroke="#f9dfbb" stroke-width="1.5" stroke-dasharray="6 12" stroke-linecap="round" fill="none"/>
+              <path d="M94 161V86M89 108c-5-30-16-29-28-35m28 35c16-37 35-35 48-30m-48 17c-19-26-36-14-45-13m46 15c19-15 37-8 42-3" stroke="#755e51" stroke-width="6" fill="none" stroke-linecap="round"/>
+              <path d="M735 159V93m-5 20c-6-22-19-22-26-24m26 24c19-28 31-29 46-25m-45 36c-13-12-26-11-35-10m35 11c13-11 29-10 42-8" stroke="#755e51" stroke-width="5" fill="none" stroke-linecap="round"/>
+              <g fill="#fff7ec" opacity=".9"><path d="M171 47l7 0m-3-3v6M223 60l6 0m-3-3v6M449 36l5 0m-2-2v5" stroke="#fff7ec" stroke-width="1.5"/></g>
+            </svg>
+          </div>
+
+          <p class="section-heading">Two days, two little plans</p>
+          <div class="plan-row">
+            <div class="date" aria-label="Friday, November 13"><span class="month">Nov</span><span class="day">13</span><span class="weekday">Friday</span></div>
+            <div>
+              <div class="small-kicker">The evening plan</div>
+              <h3>Dinner <span class="emoji" aria-hidden="true">🍽️</span></h3>
+              <p>A cozy dinner, good food, and even better company.</p>
+            </div>
+          </div>
+          <div class="plan-row">
+            <div class="date" aria-label="Saturday, November 14"><span class="month">Nov</span><span class="day">14</span><span class="weekday">Saturday</span></div>
+            <div>
+              <div class="small-kicker">The adventure plan</div>
+              <h3>Your choice <span class="emoji" aria-hidden="true">🌄</span></h3>
+              <p>A hike, a scenic drive, or something you'd love doing — I'm happy as long as it's with you.</p>
+            </div>
+          </div>
+
+          <section class="choice-block" aria-labelledby="choose-heading">
+            <h3 id="choose-heading">What's your Saturday vibe?</h3>
+            <p class="sub">Pick whatever sounds fun to you. The best plan is one you'll enjoy. ✨</p>
+            <div class="choices" role="group" aria-label="Pick your Saturday plan">
+              <button class="choice" type="button" data-choice="hike" aria-pressed="false"><span class="choice-icon" aria-hidden="true">🥾</span><span>A beautiful hike</span></button>
+              <button class="choice" type="button" data-choice="drive" aria-pressed="false"><span class="choice-icon" aria-hidden="true">🚗</span><span>A scenic drive</span></button>
+              <button class="choice" type="button" data-choice="other" aria-pressed="false"><span class="choice-icon" aria-hidden="true">✨</span><span>Your idea!</span></button>
+            </div>
+            <div class="other-idea" id="otherWrap"><label for="otherText">Have something in mind? Tell me!</label><textarea id="otherText" maxlength="200" placeholder="Anything you'd love to do…"></textarea></div>
+          </section>
+
+          <div class="closer">
+            <p class="line">I'll bring the good company.<br>You just choose the vibe. 😉</p>
+            <p class="fine">No pressure — just a little invitation because I'm genuinely looking forward to seeing you.</p>
+            <button class="primary" id="replyBtn" type="button">Make a little reply <span aria-hidden="true">♡</span></button>
+            <div class="small-note">This just prepares a message you can share — nothing is automatically sent.</div>
+          </div>
+        </article>
+        <div class="bottom">Made with a little thought, just for <span>Namratha ♥</span></div>
+      </section>
+    </div>
+  </main>
+
+  <div class="dialog-backdrop" id="dialogBack" hidden>
+    <section class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialogHeading" aria-describedby="dialogDesc">
+      <button class="dialog-close" type="button" id="closeDialog" aria-label="Close">×</button>
+      <div class="tiny-upper">P.S. Your reply</div>
+      <h3 id="dialogHeading">Sounds like a plan! 💌</h3>
+      <p id="dialogDesc">Here's a little message you can copy or share.</p>
+      <div class="reply" id="replyText"></div>
+      <div class="dialog-actions"><button class="primary" id="copyBtn" type="button">Copy message</button><button class="outline" id="shareBtn" type="button">Share it</button></div>
+      <div class="status" id="status" role="status" aria-live="polite"></div>
+    </section>
+  </div>
+
+  <script>
+    (() => {
+      const openButton = document.getElementById('openBtn');
+      const envelopeButton = document.getElementById('envelopeBtn');
+      const invite = document.getElementById('invitation');
+      const choices = [...document.querySelectorAll('.choice')];
+      const otherWrap = document.getElementById('otherWrap');
+      const otherText = document.getElementById('otherText');
+      const dialogBack = document.getElementById('dialogBack');
+      const replyText = document.getElementById('replyText');
+      const shareBtn = document.getElementById('shareBtn');
+      const status = document.getElementById('status');
+      let chosen = null;
+      let opened = false;
+      let lastFocus = null;
+
+      function reveal() {
+        if (!opened) {
+          opened = true;
+          envelopeButton.classList.add('opened');
+          openButton.textContent = 'View our little plan  ↓';
+          invite.hidden = false;
+          requestAnimationFrame(() => requestAnimationFrame(() => invite.classList.add('visible')));
+        }
+        window.setTimeout(() => invite.scrollIntoView({behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',block:'start'}), opened ? 480 : 0);
+      }
+      openButton.addEventListener('click', reveal);
+      envelopeButton.addEventListener('click', reveal);
+
+      choices.forEach(button => button.addEventListener('click', () => {
+        chosen = button.dataset.choice;
+        choices.forEach(choice => choice.setAttribute('aria-pressed', String(choice === button)));
+        otherWrap.classList.toggle('show', chosen === 'other');
+        if (chosen === 'other') otherText.focus();
+      }));
+
+      function makeReply() {
+        let preference;
+        if (chosen === 'hike') preference = 'a beautiful hike 🥾';
+        else if (chosen === 'drive') preference = 'a scenic drive 🚗';
+        else if (chosen === 'other') preference = otherText.value.trim() || 'something fun we can decide together ✨';
+        else preference = 'let me think about our Saturday adventure 😊';
+        return `Hey! 💌 Your California invitation was really sweet.\n\nDinner on November 13 sounds lovely. And for November 14, I'd pick ${preference}.\n\nLooking forward to it! 😊`;
+      }
+
+      function openDialog() {
+        lastFocus = document.activeElement;
+        replyText.textContent = makeReply();
+        status.textContent = '';
+        dialogBack.hidden = false;
+        document.body.style.overflow = 'hidden';
+        document.getElementById('closeDialog').focus();
+      }
+      function closeDialog() {
+        dialogBack.hidden = true;
+        document.body.style.overflow = '';
+        lastFocus?.focus();
+      }
+      document.getElementById('replyBtn').addEventListener('click', openDialog);
+      document.getElementById('closeDialog').addEventListener('click', closeDialog);
+      dialogBack.addEventListener('click', event => { if (event.target === dialogBack) closeDialog(); });
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && !dialogBack.hidden) closeDialog();
+        if (event.key === 'Tab' && !dialogBack.hidden) {
+          const focusables = [...dialogBack.querySelectorAll('button:not([disabled])')];
+          const first = focusables[0];const last = focusables[focusables.length - 1];
+          if (event.shiftKey && document.activeElement === first) {event.preventDefault();last.focus();}
+          else if (!event.shiftKey && document.activeElement === last) {event.preventDefault();first.focus();}
+        }
+      });
+      document.getElementById('copyBtn').addEventListener('click', async () => {
+        try {
+          if (navigator.clipboard && window.isSecureContext) await navigator.clipboard.writeText(replyText.textContent);
+          else {
+            const textarea = document.createElement('textarea');
+            textarea.value = replyText.textContent;textarea.style.position='fixed';textarea.style.opacity='0';
+            document.body.appendChild(textarea);textarea.select();
+            const copied = document.execCommand('copy');textarea.remove();
+            if (!copied) throw new Error('Clipboard unavailable');
+          }
+          status.textContent = 'Copied! Send it however you like. ♡';
+        } catch(err) {status.textContent = 'Copy unavailable — you can select and copy the message above.';}
+      });
+      if (!navigator.share) shareBtn.hidden = true;
+      shareBtn.addEventListener('click', async () => {
+        if (!navigator.share) return;
+        try { await navigator.share({text:replyText.textContent}); }
+        catch(err) {if(err.name !== 'AbortError') status.textContent='Sharing was unavailable. Try copying instead.';}
+      });
+    })();
+  </script>
+</body>
+</html>
